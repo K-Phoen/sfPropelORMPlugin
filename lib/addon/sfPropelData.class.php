@@ -147,7 +147,7 @@ class sfPropelData extends sfData
 
         foreach ($data as $name => $value)
         {
-          if (is_array($value) && 's' == substr($name, -1))
+          if (is_array($value) && 's' == substr($name, -1) && 'ARRAY' !== $tableMap->getColumn($name)->getType())
           {
             // many to many relationship
             $this->loadMany2Many($obj, substr($name, 0, -1), $value);
